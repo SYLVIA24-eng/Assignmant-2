@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Welcome To Lesotho Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome To Lesotho Hub</h1>
+            <h2>Explore With Us</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="tips.html">Business Tips</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="buttons">
+            <button class="button" onclick="showProducts('farmers')">Farmers</button>
+            <button class="button" onclick="showProducts('sneakers')">Sneakers</button>
+            <button class="button" onclick="showProducts('lotions')">Lotions</button>
+        </div>
+    </div>
+
+    <main>
+        <section id="products">
+            <!-- Farmers Products -->
+            <div id="farmers" class="product-category">
+                <h2>Farmers' Products</h2>
+                <div class="product">
+                    <h3>Pumpkin</h3>
+                    <img src="PMK.png" width="130" height="130" alt="Pumpkin">
+                    <p>Price: M50.00</p>
+                    <button class="buy-button" onclick="openModal('Pumpkin', 50)">Buy Now</button>
+                </div>
+                <div class="product">
+                    <h3>Tomatoes</h3>
+                    <img src="TMT.jpg" width="130" height="130" alt="Tomatoes">
+                    <p>Price: M30.00</p>
+                    <button class="buy-button" onclick="openModal('Tomatoes', 30)">Buy Now</button>
+                </div>
+                <div class="product">
+                    <h3>Carrots</h3>
+                    <img src="CRT.png" width="130" height="130" alt="Carrots">
+                    <p>Price: M40.00</p>
+                    <button class="buy-button" onclick="openModal('Carrots', 40)">Buy Now</button>
+                </div>
+                <div class="product">
+                    <h3>Green pepper</h3>
+                    <img src="GP.jpg" width="130" height="130" alt="Cabbage">
+                    <p>Price: M20.00</p>
+                    <button class="buy-button" onclick="openModal('Green pepper', 20)">Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Sneakers Products -->
+            <div id="sneakers" class="product-category">
+                <h2>Sneakers</h2>
+                <div class="product-card sale">
+                    <span class="sale-label">Sale</span>
+                    <img src="SS.jpg" alt="Women's Sneakers">
+                    <h3>Women's Sneakers</h3>
+                    <p class="price">Price: M2000 <span style="text-decoration: line-through; color: red;">M2600</span></p>
+                    <button class="buy-button" onclick="openModal('Women\'s Sneakers', 2000)">Buy Now</button>
+                </div>
+                <div class="product">
+                    <img src="DD.jpg" alt="Classic Men's Sneakers">
+                    <h3>Classic Men's Sneakers</h3>
+                    <p>Price: R1049.99</p>
+                    <button class="buy-button" onclick="openModal('Classic Men\'s Sneakers', 1049.99)">Buy Now</button>
+                </div>
+                <div class="product">
+                    <img src="sporty.png" alt="Sporty Sneakers">
+                    <h3>Sporty Sneakers</h3>
+                    <p>Price: M1200.00</p>
+                    <button class="buy-button" onclick="openModal('Sporty Sneakers', 1200)">Buy Now</button>
+                </div>
+                <div class="product">
+                    <img src="images4.jpg" alt="Vintage Sneakers">
+                    <h3>Vintage Sneakers</h3>
+                    <p>Price: M1500.00</p>
+                    <button class="buy-button" onclick="openModal('Vintage Sneakers', 1500)">Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Lotions Products -->
+            <div id="lotions" class="product-category">
+                <h2>Lotions</h2>
+                <div class="product">
+                    <img src="lotion2.jpg" alt="Lotion">
+                    <h3>Lotion</h3>
+                    <p>Price: R150.99</p>
+                    <button class="buy-button" onclick="openModal('Lotion', 150.99)">Buy Now</button>
+                </div>
+                <div class="product">
+                    <img src="lotion3.jpg" alt="Body Cream">
+                    <h3>Body Cream</h3>
+                    <p>Price: R200.00</p>
+                    <button class="buy-button" onclick="openModal('Body Cream', 200)">Buy Now</button>
+                </div>
+                <div class="product">
+                    <img src="FCGM.jpg" alt="Face Cream">
+                    <h3>Face Cream</h3>
+                    <p>Price: R180.00</p>
+                    <button class="buy-button" onclick="openModal('Face Cream', 180)">Buy Now</button>
+                </div>
+                <div class="product">
+                    <img src="HDCM.jpeg" alt="Hand Cream">
+                    <h3>Hand Cream</h3>
+                    <p>Price: R130.00</p>
+                    <button class="buy-button" onclick="openModal('Hand Cream', 130)">Buy Now</button>
+                </div>
+            </div>
+        </section>
+
+        <h2>Find the Best Products at Lesotho Hub</h2>
+        <p>Browse through our curated selection of items.</p>
+        <a href="#farmers" class="btn">Shop Now</a>
+    </main>
+
+    <script>
+        function showProducts(category) {
+            const categories = document.querySelectorAll('.product-category');
+            categories.forEach(cat => cat.style.display = 'none');
+            const selectedCategory = document.getElementById(category);
+            if (selectedCategory) {
+                selectedCategory.style.display = 'block';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            showProducts('farmers'); // Default display for Farmers category
+        });
+
+        function openModal(productName, price) {
+            alert(`You selected ${productName}. Price: ${price}`);
+        }
+    </script>
+</body>
+</html>
